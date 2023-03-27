@@ -8,11 +8,11 @@ const { isValid, isValidTime, getUUID } = require("../utils/utils");
 const createUser = async (req, res) => {
   try {
     // data sent through request body
-    const body = req.body;
-
+    const body = JSON.parse(JSON.stringify(req.body));
+    console.log(body);
     let { name, value } = body;
     value = parseInt(value);
-
+   
     if (!isValid(name)) {
       return res.status(400).send({
         status: false,
